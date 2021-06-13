@@ -16,8 +16,9 @@ Find the least number for which the proportion of bouncy numbers is exactly 99%.
 """
 
 
-def nokia_test(percentage: float = 90):
+def main():
     initial_number = 100
+    percentage = 99  # target percentage
     bounce = 0  # Total bouncy numbers
     final_percentage = percentage / 100
     while True:
@@ -44,8 +45,11 @@ def nokia_test(percentage: float = 90):
             break
         initial_number += 1
 
-    return {
-        'final_number': initial_number,
-        'bounce_amount': bounce,
-        'percentage': float(bounce) * 100 / float(initial_number)
-    }
+    print('\n')
+    print('final number: ', initial_number)
+    print('bounce numbers: ', bounce)
+    print('\n')
+
+
+if __name__ == "__main__":
+    main()
