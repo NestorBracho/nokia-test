@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{% load i18n static %}
+
+{% load humanize %}
+
+{% block body_class %}login-page{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center" style="margin-top: 50px;">
+        <div class="col-lg-12 col-sm">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <h4 class="col">Bounce numbers</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Working from left-to-right if no digit is exceeded by the digit to its left it is called an increasing number;
+                        for example, 134468.
+                        <br><br>
+                        Similarly if no digit is exceeded by the digit to its right it is called a decreasing number; for example, 66420.
+                        <br><br>
+                        We shall call a positive integer that is neither increasing nor decreasing a "bouncy" number; for example, 155349.
+                        <br><br>
+                        Clearly there cannot be any bouncy numbers below one-hundred, but just over half of the numbers below one-thousand
+                        (525) are bouncy. In fact, the least number for which the proportion of bouncy numbers first reaches 50% is 538.
+                        <br><br>
+                        Surprisingly, bouncy numbers become more and more common and by the time we reach 21780 the proportion of bouncy
+                        numbers is equal to 90%.
+                        <br><br>
+                        Set a percentage number to find out how big is the final number and the amount of bouncy number in between.
+                    </p>
+                    <form action="" method="post" id="nokia-form-id">
+                        {% csrf_token %}
+                            <div class="row row-cols-md-2 row-cols-sm-1 row-cols-1">
+                                <div class="col">
+                                    {% bootstrap_field form.percentage %}
+                                </div>
+                            </div>
+                        <input type="submit" value="Calculate" class="btn btn-primary float-right">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if final_number and bounce_amount %}
+    <div class="row justify-content-center" style="margin-top: 50px;">
+        <div class="col-lg-12 col-sm">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <h4 class="col">Response</h4>
+                        <span id="percentage-id" class="float-right text-muted" style="margin-top: 5px;">Percentage: {{ percentage }}%</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row row-cols-md-2 row-cols-sm-1 row-cols-1">
+                        <div class="col">
+                            <b>Final number: </b> {{ final_number|intcomma }}
+                        </div>
+                        <div class="col">
+                            <b>Total bouncy numbers: </b> {{ bounce_amount|intcomma }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
