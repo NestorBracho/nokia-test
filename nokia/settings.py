@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=mh=f6c)iy*az$2e24f@7k3kz@8=xzjn7mt8!!gtg9ejfn20u9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -53,9 +53,6 @@ THIRD_PARTY_APPS = [
 
     # Optional: Django admin theme (must be before django.contrib.admin)
     'adminlte3_theme',
-
-    # # https://github.com/etianen/django-s3-storage
-    # 'django_s3_storage',
 ]
 
 INSTALLED_APPS = INTERNAL_APPS + DJANGO_APPS + THIRD_PARTY_APPS
